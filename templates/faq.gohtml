@@ -1,4 +1,4 @@
-
+{{template "header" .}}
     <h1>Frequently Asked Questions</h1>
     
     <ul>
@@ -8,6 +8,7 @@
     
     </ul>
 
+{{template "footer" .}}
 
 {{define "faq" }}
 <li><strong>{{.Question}}</strong> {{.Answer}}</li>

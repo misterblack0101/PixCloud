@@ -19,7 +19,7 @@ func main() {
 	router.Get("/contact", controllers.StaticHandler(t))
 
 	t = views.Must(views.ParseFS(templates.FS, "faq.gohtml"))
-	router.Get("/faq", controllers.StaticHandler(t))
+	router.Get("/faq", controllers.FAQ(t))
 
 	router.NotFound(controllers.StaticHandler(views.Must(views.ParseFS(templates.FS, "not_found.gohtml"))))
 

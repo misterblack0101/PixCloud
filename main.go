@@ -12,10 +12,10 @@ import (
 
 func main() {
 	router := chi.NewRouter()
-	t := views.Must(views.ParseFS(templates.FS, "home.gohtml"))
+	t := views.Must(views.ParseFS(templates.FS, "layout-page.gohtml", "home.gohtml"))
 	router.Get("/", controllers.StaticHandler(t))
 
-	t = views.Must(views.ParseFS(templates.FS, "contact.gohtml"))
+	t = views.Must(views.ParseFS(templates.FS, "layout-page.gohtml", "contact.gohtml"))
 	router.Get("/contact", controllers.StaticHandler(t))
 
 	t = views.Must(views.ParseFS(templates.FS, "faq.gohtml"))

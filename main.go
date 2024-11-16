@@ -21,6 +21,8 @@ func main() {
 	t = views.Must(views.ParseFS(templates.FS, "faq.gohtml"))
 	router.Get("/faq", controllers.StaticHandler(t))
 
+	router.NotFound(controllers.StaticHandler(views.Must(views.ParseFS(templates.FS, "not_found.gohtml"))))
+
 	fmt.Println("Starting server on 3000....")
 	http.ListenAndServe(":3000", router)
 }

@@ -2,27 +2,22 @@ package main
 
 import (
 	"fmt"
-	"html/template"
 	"log"
 	"net/http"
 	"path/filepath"
+	"pixcloud/views"
 
 	"github.com/go-chi/chi/v5"
 )
 
 func executeTemplate(w http.ResponseWriter, filePath string) {
-	tmp, err := template.ParseFiles(filePath)
+	t, err := views.Parse(filePath)
 	if err != nil {
-		log.Print("Error parsing template\n", err)
+		log.Print(err)
 		http.Error(w, "<h1> There was en error loading the site</h1>", http.StatusInternalServerError)
 		return
 	}
-	err = tmp.Execute(w, nil)
-	if err != nil {
-		log.Print("Error parsing template\n", err)
-		http.Error(w, "<h1> There was en error loading the site</h1>", http.StatusInternalServerError)
-		return
-	}
+	t.Execute(w, nil)
 }
 
 func homePageHandler(w http.ResponseWriter, r *http.Request) {

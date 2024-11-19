@@ -2,13 +2,12 @@ package controllers
 
 import (
 	"net/http"
-	"pixcloud/views"
 )
 
 type Users struct {
 	// anonymous struct called Tempates
 	Templates struct {
-		New views.Template
+		New Template
 	}
 }
 

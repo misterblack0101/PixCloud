@@ -1,38 +1,32 @@
 {{template "header" .}}
-    <header>
-        <h1>Contact Us</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Get in Touch</h2>
-            <p>If you have any questions, feel free to reach out to us using the form below.</p>
-            <form action="/contact" method="post">
-                <div>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <div>
-                    <button type="submit">Send Message</button>
-                </div>
-            </form>
-        </section>
-        <section>
-            <h2>Our Office</h2>
-            <p>1234 PixCloud Street, Suite 100<br>
-            San Francisco, CA 94102<br>
-            Phone: (123) 456-7890<br>
-            Email: info@pixcloud.com</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 PixCloud. All rights reserved.</p>
-    </footer>
+<main class="p-4">
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Get in Touch</h2>
+        <p class="mb-4">If you have any questions, feel free to reach out to us using the form below.</p>
+        <form action="/contact" method="post" class="space-y-4">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
+                <input type="text" id="name" name="name" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                <input type="email" id="email" name="email" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="message" class="block text-sm font-medium text-gray-700">Message:</label>
+                <textarea id="message" name="message" rows="5" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Send Message</button>
+            </div>
+        </form>
+    </section>
+    <section>
+        <h2 class="text-2xl font-semibold mb-4">Our Office</h2>
+        <p class="text-gray-700">1234 PixCloud Street, Suite 100<br>
+        San Francisco, CA 94102<br>
+        Phone: (123) 456-7890<br>
+        Email: <a href="mailto:info@pixcloud.com" class="text-indigo-600 hover:text-indigo-800">info@pixcloud.com</a></p>
+    </section>
+</main>
 {{template "footer" .}}

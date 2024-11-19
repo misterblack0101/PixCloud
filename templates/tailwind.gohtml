@@ -9,22 +9,26 @@
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>PixCloud</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/faq">FAQ</a></li>
-                <li><a href="/contact">Contact</a></li>
+    <header class="bg-blue-500 text-white p-4">
+        <div class="flex items-center ">
+            <h1 class="text-3xl font-bold pr-10">PixCloud</h1>
+            <nav >
+            <ul class="flex space-x-4">
+                <li><a href="/" class="hover:underline">Home</a></li>
+                <li><a href="/faq" class="hover:underline">FAQ</a></li>
+                <li><a href="/contact" class="hover:underline">Contact</a></li>
             </ul>
-        </nav>
+            </nav>
+        </div>
     </header>
  {{end}}
 
  {{define "footer"}}   
         
-    <footer>
-        <p>&copy; 2023 PixCloud. All rights reserved.</p>
+    <footer class="bg-blue-500 text-white p-4 mt-4">
+        <div class="flex justify-center">
+            <p>&copy; 2023 PixCloud. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>

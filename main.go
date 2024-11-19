@@ -21,8 +21,11 @@ func main() {
 	t = views.Must(views.ParseFS(templates.FS, "faq.gohtml", "tailwind.gohtml"))
 	router.Get("/faq", controllers.FAQ(t))
 
-	t = views.Must(views.ParseFS(templates.FS, "signup.gohtml", "tailwind.gohtml"))
-	router.Get("/signup", controllers.FAQ(t))
+	userStruct := controllers.Users{}
+	userStruct.Templates.New =
+		views.Must(views.ParseFS(templates.FS, "signup.gohtml", "tailwind.gohtml"))
+
+	router.Get("/signup", userStruct.CreateUser)
 
 	router.NotFound(controllers.StaticHandler(views.Must(views.ParseFS(templates.FS, "not_found.gohtml"))))
 

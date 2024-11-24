@@ -9,7 +9,8 @@ import (
 type Users struct {
 	// anonymous struct called Tempates
 	Templates struct {
-		New Template
+		New    Template
+		SignIn Template
 	}
 	UserService *models.UserService
 }
@@ -22,6 +23,14 @@ func (user Users) New(w http.ResponseWriter, r *http.Request) {
 	user.Templates.New.Execute(w, data)
 }
 
+func (user Users) SignIn(w http.ResponseWriter, r *http.Request) {
+	var data struct {
+		Email string
+	}
+	data.Email = r.FormValue("email")
+	user.Templates.SignIn.Execute(w, data)
+}
+
 func (user Users) Create(w http.ResponseWriter, r *http.Request) {
 	email, password := r.PostFormValue("email"), r.PostFormValue("password")
 	// create new user
@@ -32,5 +41,17 @@ func (user Users) Create(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	fmt.Fprint(w, "User Created successfully", userModel)
+}
 
+func (user Users) Login(w http.ResponseWriter, r *http.Request) {
+	email, password := r.PostFormValue("email"), r.PostFormValue("password")
+	fmt.Println(email, password)
+	// create new user
+	userModel, err := user.UserService.Login(email, password)
+	if err != nil {
+		fmt.Println(err)
+		http.Error(w, "Invalid credentials!", http.StatusUnauthorized)
+		return
+	}
+	fmt.Fprint(w, "User logged in successfully", userModel)
 }

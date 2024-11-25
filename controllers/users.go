@@ -53,5 +53,16 @@ func (user Users) Login(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Invalid credentials!", http.StatusUnauthorized)
 		return
 	}
+	cookie := http.Cookie{Name: "email", Value: userModel.Email, Path: "/"}
+	http.SetCookie(w, &cookie)
 	fmt.Fprint(w, "User logged in successfully", userModel)
+}
+
+func (user Users) CurrentUser(w http.ResponseWriter, r *http.Request) {
+	email, err := r.Cookie("email")
+	if err != nil {
+		fmt.Fprint(w, "Cannot find user cookie")
+		return
+	}
+	fmt.Fprint(w, "User email is %s", email.Value)
 }

@@ -10,7 +10,7 @@ import (
 
 type User struct {
 	Id           int
-	Emal         string
+	Email        string
 	PasswordHash string
 }
 
@@ -34,7 +34,7 @@ func (us UserService) Create(email, password string) (*User, error) {
 		email, hashedPassword)
 
 	user := User{
-		Emal:         email,
+		Email:        email,
 		PasswordHash: hashedPassword,
 	}
 
@@ -62,7 +62,7 @@ func (us UserService) Login(email, password string) (*User, error) {
 		email)
 
 	user := User{
-		Emal: email,
+		Email: email,
 	}
 	err := row.Scan(&user.Id, &user.PasswordHash)
 	if err != nil {
